@@ -9,7 +9,7 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Welcome Home!</h1>
+      <h1>Welcome to the Jokes!</h1>
     </div>
   );
 }
