@@ -2,24 +2,31 @@ import { useState } from 'react';
 import getJoke from '../api/jokeData';
 
 function RenderJoke() {
-  const [value, setValue] = useState();
-  const [punchline, setPunchline] = useState();
+  const [value, setValue] = useState({});
+  const [text, btnText] = useState('Get Joke');
 
   const handleClick = () => {
-    getJoke().then((taco) => setValue(taco.setup));
-  };
-  const deliveryClick = () => {
-    getJoke().then((taco) => setPunchline(taco.delivery));
+    if (text === 'Get Joke') {
+      getJoke()
+        .then(setValue)
+        .then(() => {
+          btnText('Get punchline');
+        });
+    } else if (text === 'Get another joke') {
+      getJoke()
+        .then(setValue)
+        .then(() => {
+          btnText('Get punchline');
+        });
+    } else if (text === 'Get punchline') {
+      btnText('Get another joke');
+    }
   };
   return (
     <>
-      <h1>{value}</h1>
-      <h2>{punchline}</h2>
-      <button type="button" onClick={handleClick}>
-        Get a Joke!
-      </button>
-      <button type="button" onClick={deliveryClick}>
-        Punchline!
+      <h1>{ text === 'Get Joke' ? '' : value.setup}</h1>
+      <h2>{ text === 'Get another joke' ? value.delivery : ''}</h2>
+      <button type="button" onClick={handleClick}>{text}
       </button>
     </>
   );
