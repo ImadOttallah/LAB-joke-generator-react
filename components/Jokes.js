@@ -6,13 +6,7 @@ function RenderJoke() {
   const [text, btnText] = useState('Get Joke');
 
   const handleClick = () => {
-    if (text === 'Get Joke') {
-      getJoke()
-        .then(setValue)
-        .then(() => {
-          btnText('Get punchline');
-        });
-    } else if (text === 'Get another joke') {
+    if (text === 'Get Joke' || text === 'Get another joke') {
       getJoke()
         .then(setValue)
         .then(() => {
@@ -24,6 +18,7 @@ function RenderJoke() {
   };
   return (
     <>
+      <h1>{ text === 'Get Joke' ? 'Joke Time' : ''}</h1>
       <h1>{ text === 'Get Joke' ? '' : value.setup}</h1>
       <h2>{ text === 'Get another joke' ? value.delivery : ''}</h2>
       <button type="button" onClick={handleClick}>{text}
