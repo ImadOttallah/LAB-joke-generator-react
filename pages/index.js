@@ -1,7 +1,7 @@
 import RenderJoke from '../components/Jokes';
 
 // eslint-disable-next-line react/prop-types
-function Home({ text }) {
+function Home() {
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
@@ -12,7 +12,6 @@ function Home({ text }) {
         margin: '0 auto',
       }}
     >
-      <h1>{text === 'Get Joke' ? 'Joke Time' : ''}</h1>
       <>
         <RenderJoke />
       </>
